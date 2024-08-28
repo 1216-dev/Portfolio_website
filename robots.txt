@@ -1,0 +1,8 @@
+Disallow: /linkinbio
+
+User-agent: Googlebot-Image
+Disallow: /*.gif$
+Disallow: /assets/img/articles/clap.gif
+
+User-agent: GPTBot
+Disallow: /

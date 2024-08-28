@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Google Search find anything UI Design">
+    <title>Google Search | Search anything</title>
+    <style>* {
+      margin: 0;
+      padding: 0;
+  }
+  
+  .hero {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: #f0f3ff;
+      width: 100%;
+      height: 100vh;
+  }
+  
+  .searchBox {
+      width: 44rem;
+      border-radius: 50px;
+      padding: 10px 22px;
+      background-color: white;
+      display: flex;
+      align-items: center;
+      box-shadow: 6px 6px 10px -1px rgba(0, 0, 0, 0.15);
+      justify-content: space-between;
+      margin: 0px 10px;
+  }
+  
+  #google-img {
+      width: 30px;
+      cursor: pointer;
+  }
+  
+  #mic {
+      width: 17px;
+      cursor: pointer;
+  }
+  
+  #input {
+      background: transparent;
+      border: 0;
+      width: 85%;
+      font-size: 20px;
+      padding: 5px;
+  }
+  #input:focus {
+      outline: none;
+  }
+  
+  @media (max-width:430px) {
+      #input::placeholder{
+          padding-left: 13px;
+      }
+  }</style>
+</head>
+<body>
+    
+        <div class="searchBox">
+            <img src="google-logo-9808.png" id="google-img">
+            <input type="search" placeholder="Search google or type the URL" id="input">
+            <img src="mic.png" alt="" id="mic">
+        </div>
+    
+    <script type="text/javascript">
+        let input = document.getElementById('input');
+        if(window.innerWidth < 430){
+            input.setAttribute('placeholder', 'Search')
+        }
+        console.log(window.innerWidth)
+
+        const text = "is data science interesting";
+        const dots = "...";
+
+        function typeText() {
+            let index = 0;
+            input.value = "";
+
+            function type() {
+                if (index < text.length) {
+                    input.value += text.charAt(index);
+                    index++;
+                    setTimeout(type, 100); // Typing speed for text
+                } else {
+                    setTimeout(typeDots, 500); // Delay before starting to type dots
+                }
+            }
+
+            function typeDots() {
+                let dotsIndex = 0;
+                function addDots() {
+                    if (dotsIndex < dots.length) {
+                        input.value += dots.charAt(dotsIndex);
+                        dotsIndex++;
+                        setTimeout(addDots, 300); // Typing speed for dots
+                    } else {
+                        setTimeout(clearInput, 1000); // Delay before clearing the input
+                    }
+                }
+                addDots();
+            }
+
+            function clearInput() {
+                input.value = "";
+                setTimeout(typeText, 500); // Restart typing after a short delay
+            }
+
+            type();
+        }
+
+        typeText(); // Start the typing effect
+    </script>
+</body>
+
+</html>
